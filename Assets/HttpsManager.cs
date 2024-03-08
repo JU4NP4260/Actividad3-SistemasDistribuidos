@@ -14,8 +14,10 @@ public class HttpsManager : MonoBehaviour
 
     [Header("Player info display")]
     [SerializeField] private TextMeshProUGUI usernameDisplay;
+    [SerializeField] private TextMeshProUGUI highScoreDisplay;
     [SerializeField] private TextMeshProUGUI scoreDisplay;
 
+    public int currentScore;
 
     public UnityEvent startGame = new UnityEvent();
 
@@ -33,6 +35,11 @@ public class HttpsManager : MonoBehaviour
             Username = PlayerPrefs.GetString("username");
             StartCoroutine(GetProfile());
         }
+    }
+
+    private void Update()
+    {
+        scoreDisplay.text = currentScore.ToString();
     }
 
     public void sendRegister()
@@ -70,7 +77,7 @@ public class HttpsManager : MonoBehaviour
             Debug.Log(request.downloadHandler.text);
             if (request.responseCode == 200)
             {
-                Debug.Log("Registro Exitoso");
+                Debug.Log("Sucessful register");
                 StartCoroutine(Login(json));
             }
             else
@@ -131,22 +138,29 @@ public class HttpsManager : MonoBehaviour
             if (request.responseCode == 200)
             {
                 AuthenticationData data = JsonUtility.FromJson<AuthenticationData>(request.downloadHandler.text);
-                Debug.Log("El usuario " + data.usuario.username + " se encuentra autenticado y su puntaje es " + data.usuario.data.score);
+                Debug.Log(data.usuario.username + " has been verified \n Score:" + data.usuario.data.score);
                 //Game Start Logic
                 startGame.Invoke();
                 usernameDisplay.text = Username;
-                scoreDisplay.text = data.usuario.data.score.ToString();
+                highScoreDisplay.text = data.usuario.data.score.ToString();
 
 
-                UsuarioJson[] usuarios = new UsuarioJson[10];
+                UsuarioJson[] usersList = new UsuarioJson[10];
                 //UsuarioJson[] usuariosOrganizados = usuarios.OrderByDescending(user => user.data.score).Take(7).ToArray();
             }
             else
             {
                 //Debug.Log(request.responseCode + "|" + request.error);
-                Debug.Log("Usuario no autenticado");
+                Debug.Log("User has not been Authentified");
             }
         }
+    }
+
+    public IEnumerator SendData()
+    {
+
+        yield return null;
+
     }
 }
 [System.Serializable]

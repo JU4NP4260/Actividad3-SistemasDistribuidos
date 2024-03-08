@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;
+    public HttpsManager httpsManager;
 
     public static Player instance; 
 
@@ -19,17 +20,26 @@ public class Player : MonoBehaviour
             instance = this;
     }
 
+    private void Start()
+    {
+        httpsManager = FindFirstObjectByType<HttpsManager>();
+    }
+
     //method for damage proceccing by 'Player'
     public void GetDamage(int damage)   
     {
-        Destruction();
+         StartCoroutine(Destruction());
     }    
 
     //'Player's' destruction procedure
-    void Destruction()
+    private IEnumerator Destruction()
     {
+        httpsManager.SendData();
+
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
+
         Destroy(gameObject);
+        yield return new WaitForSeconds(3);
     }
 }
 

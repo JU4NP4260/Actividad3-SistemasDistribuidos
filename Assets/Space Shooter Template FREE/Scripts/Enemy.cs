@@ -22,9 +22,12 @@ public class Enemy : MonoBehaviour {
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     #endregion
 
+    public HttpsManager httpsManager;
+
     private void Start()
     {
         Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        httpsManager = FindFirstObjectByType<HttpsManager>();
     }
 
     //coroutine making a shot
@@ -61,7 +64,8 @@ public class Enemy : MonoBehaviour {
     //method of destroying the 'Enemy'
     void Destruction()                           
     {        
-        Instantiate(destructionVFX, transform.position, Quaternion.identity); 
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        httpsManager.currentScore++;
         Destroy(gameObject);
     }
 }
