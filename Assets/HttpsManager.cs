@@ -8,8 +8,14 @@ using UnityEngine.Events;
 
 public class HttpsManager : MonoBehaviour
 {
+    [Header("Player Auth parameters")]
     [SerializeField] private TMP_InputField inputUsername;
     [SerializeField] private TMP_InputField inputPassword;
+
+    [Header("Player info display")]
+    [SerializeField] private TextMeshProUGUI usernameDisplay;
+    [SerializeField] private TextMeshProUGUI scoreDisplay;
+
 
     public UnityEvent startGame = new UnityEvent();
 
@@ -95,6 +101,7 @@ public class HttpsManager : MonoBehaviour
                 PlayerPrefs.SetString("username", Username);
                 PlayerPrefs.SetString("token", Token);
                 Debug.Log(data.token);
+                startGame.Invoke();
             }
             else
             {
@@ -127,9 +134,12 @@ public class HttpsManager : MonoBehaviour
                 Debug.Log("El usuario " + data.usuario.username + " se encuentra autenticado y su puntaje es " + data.usuario.data.score);
                 //Game Start Logic
                 startGame.Invoke();
+                usernameDisplay.text = Username;
+                scoreDisplay.text = data.usuario.data.score.ToString();
+
 
                 UsuarioJson[] usuarios = new UsuarioJson[10];
-                UsuarioJson[] usuariosOrganizados = usuarios.OrderByDescending(user => user.data.score).Take(7).ToArray();
+                //UsuarioJson[] usuariosOrganizados = usuarios.OrderByDescending(user => user.data.score).Take(7).ToArray();
             }
             else
             {
