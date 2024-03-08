@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -40,6 +41,8 @@ public class Player : MonoBehaviour
 
         Destroy(gameObject);
         yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene(0);
     }
 }
 
