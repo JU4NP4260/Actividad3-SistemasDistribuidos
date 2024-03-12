@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     //'Player's' destruction procedure
     private IEnumerator Destruction()
     {
-        httpsManager.SendData();
+        httpsManager.Event_SendData();
 
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
 
