@@ -38,9 +38,10 @@ public class Player : MonoBehaviour
         httpsManager.Event_SendData();
 
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<PlayerShooting>().enabled = false;
 
-        Destroy(gameObject);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene(0);
     }
