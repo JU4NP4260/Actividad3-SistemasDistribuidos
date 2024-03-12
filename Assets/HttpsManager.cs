@@ -52,9 +52,12 @@ public class HttpsManager : MonoBehaviour
     {
         AuthenticationData data = new AuthenticationData();
 
+        Debug.Log("Borton Registro");
+
+
         data.username = inputUsername.text;
         data.password = inputPassword.text;
-        StartCoroutine(Register(JsonUtility.ToJson(data)));
+        StartCoroutine("Register", JsonUtility.ToJson(data));
     }
 
     public void sendLogin()
@@ -253,7 +256,7 @@ public class HttpsManager : MonoBehaviour
                 //}
 
                 //sortedUsers
-                var userList = data.users.OrderByDescending(u => u.data.score).Take(9).ToArray();
+                var userList = data.usuarios.OrderByDescending(u => u.data.score).Take(9).ToArray();
                 CreateLeaderboard(userList);
             }
             else
@@ -298,7 +301,15 @@ public class AuthenticationData
     public string password;
     public UsersJson usuario;
     public string token;
+    public UsersList[] usuarios;
 }
+
+[System.Serializable]
+public class UsersList
+{
+    public UsersJson[] usuarios;
+}
+
 [System.Serializable]
 public class UsersJson
 {
@@ -313,8 +324,3 @@ public class DataUser
     public int score;
 }
 
-[System.Serializable]
-public class UsersList
-{
-    public UsersJson[] users;
-}
