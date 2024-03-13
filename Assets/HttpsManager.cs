@@ -118,6 +118,8 @@ public class HttpsManager : MonoBehaviour
                 PlayerPrefs.SetString("token", Token);
                 Debug.Log(data.token);
                 startGame.Invoke();
+
+                StartCoroutine(GetProfile());
             }
             else
             {

@@ -1798,6 +1798,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114660646102788534, guid: 8e33fda0c220936498f5288af83d7450,
+        type: 3}
+      propertyPath: MovementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 199119291531354066, guid: 8e33fda0c220936498f5288af83d7450,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -1914,6 +1919,18 @@ MonoBehaviour:
       - m_Target: {fileID: 916929099}
         m_TargetAssemblyTypeName: HttpsManager, Assembly-CSharp
         m_MethodName: sendLogin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 916929099}
+        m_TargetAssemblyTypeName: HttpsManager, Assembly-CSharp
+        m_MethodName: Event_GetUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

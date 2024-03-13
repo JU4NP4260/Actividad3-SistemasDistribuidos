@@ -15,12 +15,14 @@ public class Borders
     [HideInInspector] public float minX, maxX, minY, maxY;
 }
 
+
 public class PlayerMoving : MonoBehaviour {
 
     [Tooltip("offset from viewport borders for player's movement")]
     public Borders borders;
     Camera mainCamera;
-    bool controlIsActive = false; 
+    bool controlIsActive = false;
+    [SerializeField] float MovementSpeed = 1;
 
     public static PlayerMoving instance; //unique instance of the script for easy access to the script
 
@@ -48,6 +50,9 @@ public class PlayerMoving : MonoBehaviour {
                 mousePosition.z = transform.position.z;
                 transform.position = Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
             }
+
+            Vector3 direction = CalculateDirection();
+            transform.Translate(direction * MovementSpeed * Time.deltaTime);
 #endif
 
 #if UNITY_IOS || UNITY_ANDROID //if current platform is mobile, 
@@ -67,6 +72,28 @@ public class PlayerMoving : MonoBehaviour {
                 0
                 );
         }
+    }
+
+    public Vector3 CalculateDirection()
+    {
+        Vector3 direction = Vector3.zero;
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            direction.y += 1.0f;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            direction.x -= 1.0f;
+        }
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            direction.y -= 1.0f;
+        }
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            direction.x += 1.0f;
+        }
+        return direction.normalized;
     }
 
     //setting 'Player's' movement borders according to Viewport size and defined offset
