@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "264104464970",
+    "firebase_url": "https://sistdistribuidos-firebase-default-rtdb.firebaseio.com",
+    "project_id": "sistdistribuidos-firebase",
+    "storage_bucket": "sistdistribuidos-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264104464970:android:734029d167fa1b4b704cb3",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw-ynrObiWzelWn8jLKKABuxXYBq4E_yM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

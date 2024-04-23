@@ -5784,7 +5784,7 @@ GameObject:
   - component: {fileID: 1584150240}
   - component: {fileID: 1584150239}
   m_Layer: 5
-  m_Name: Register
+  m_Name: Singup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5854,21 +5854,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 916929099}
-        m_TargetAssemblyTypeName: HttpsManager, Assembly-CSharp
-        m_MethodName: sendRegister
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 916929099}
-        m_TargetAssemblyTypeName: HttpsManager, Assembly-CSharp
-        m_MethodName: Event_GetUser
+      - m_Target: {fileID: 1981314300}
+        m_TargetAssemblyTypeName: FirebaseAuth_manager, Assembly-CSharp
+        m_MethodName: RegisterUser_Btn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5973,7 +5961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Register
+  m_text: Singup
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7127,6 +7115,104 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1981314299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981314301}
+  - component: {fileID: 1981314300}
+  m_Layer: 0
+  m_Name: HttpsManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1981314300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981314299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e708ff1d65cbe44cb348827c79447d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputUsername: {fileID: 1129578380}
+  inputPassword: {fileID: 37099573}
+  usernameDisplay: {fileID: 121954974}
+  highScoreDisplay: {fileID: 214052960}
+  scoreDisplay: {fileID: 1877419668}
+  leaderboard_usernames:
+  - {fileID: 177353070}
+  - {fileID: 986034288}
+  - {fileID: 566267179}
+  - {fileID: 1217892720}
+  - {fileID: 228894894}
+  - {fileID: 510110377}
+  - {fileID: 100474209}
+  - {fileID: 596941095}
+  - {fileID: 138446983}
+  leaderboard_scores:
+  - {fileID: 1669249813}
+  - {fileID: 1311589414}
+  - {fileID: 151627118}
+  - {fileID: 595173244}
+  - {fileID: 38302452}
+  - {fileID: 423445782}
+  - {fileID: 167094342}
+  - {fileID: 1157305570}
+  - {fileID: 1853392511}
+  currentScore: 0
+  downloadedScore: 0
+  startGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 969073714}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1180099164}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!4 &1981314301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981314299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 429.30573, y: 1022.0523, z: -0.41714907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089244880
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,3 +7635,4 @@ SceneRoots:
   - {fileID: 271878659}
   - {fileID: 1667843886}
   - {fileID: 916929100}
+  - {fileID: 1981314301}
